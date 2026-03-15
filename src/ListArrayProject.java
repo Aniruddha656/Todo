@@ -6,8 +6,8 @@ public class ListArrayProject
     {
         Scanner sc = new Scanner(System.in);
         ArrayList<String> tasks = new ArrayList<>();
-        boolean isTrue = true;
-        while (isTrue)
+        boolean isExit = true;
+        while (isExit)
         {
             System.out.println("---Menu---");
             System.out.println("1:---Add Task---");
