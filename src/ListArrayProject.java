@@ -27,11 +27,19 @@ public class ListArrayProject {
                     System.out.print("Enter Description: ");
                     String description = sc.nextLine();
 
-                    System.out.print("Enter Priority (HIGH/MEDIUM/LOW): ");
-                    String priority = sc.nextLine().trim();
+                    String priority;
 
-                    if (priority.isEmpty()) {
-                        priority = "LOW";
+                    while (true) {
+                        System.out.print("Enter Priority (HIGH/MEDIUM/LOW): ");
+                        priority = sc.nextLine().trim().toUpperCase();
+
+                        if (priority.equals("HIGH") ||
+                                priority.equals("MEDIUM") ||
+                                priority.equals("LOW")) {
+                            break;
+                        }
+
+                        System.out.println("Invalid priority! Please enter HIGH, MEDIUM, or LOW.");
                     }
 
                     String status = "PENDING";
