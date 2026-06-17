@@ -27,22 +27,22 @@ public class ListArrayProject {
                     System.out.print("Enter Description: ");
                     String description = sc.nextLine();
 
-                    String priority;
+                    Priority priority;
 
                     while (true) {
+
                         System.out.print("Enter Priority (HIGH/MEDIUM/LOW): ");
-                        priority = sc.nextLine().trim().toUpperCase();
+                        String input = sc.nextLine().trim().toUpperCase();
 
-                        if (priority.equals("HIGH") ||
-                                priority.equals("MEDIUM") ||
-                                priority.equals("LOW")) {
+                        try {
+                            priority = Priority.valueOf(input);
                             break;
+                        } catch (IllegalArgumentException e) {
+                            System.out.println("Invalid priority! Please enter HIGH, MEDIUM, or LOW.");
                         }
-
-                        System.out.println("Invalid priority! Please enter HIGH, MEDIUM, or LOW.");
                     }
 
-                    String status = "PENDING";
+                    Status status = Status.PENDING;
 
                     Task task = new Task(
                             id,

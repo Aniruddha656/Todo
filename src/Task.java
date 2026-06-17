@@ -1,35 +1,35 @@
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-    public class Task {
-        int id;
-        String title;
-        String description;
-        String priority;
-        String status;
-        String createdTime;
 
-        public Task(int id, String title, String description,
-                    String priority, String status) {
+public class Task {
 
-            this.id = id;
-            this.title = title;
-            this.description = description;
-            this.priority = priority;
-            this.status = status;
-            DateTimeFormatter formatter =
-                    DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+    int id;
+    String title;
+    String description;
+    Priority priority;
+    Status status;
+    String createdTime;
 
-            this.createdTime = LocalDateTime.now().format(formatter);
-        }
+    public Task(int id, String title, String description,
+                Priority priority, Status status) {
 
-        @Override
-        public String toString() {
-            return "ID: " + id +
-                    "\nTitle: " + title +
-                    "\nDescription: " + description +
-                    "\nPriority: " + priority +
-                    "\nStatus: " + status +
-                    "\nCreated Time: " + createdTime +
-                    "\n";
-        }
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.priority = priority;
+        this.status = status;
+
+        this.createdTime = LocalDateTime.now()
+                .format(Constant.TASK_DATE_FORMATTER);
     }
+
+    @Override
+    public String toString() {
+        return "ID: " + id +
+                "\nTitle: " + title +
+                "\nDescription: " + description +
+                "\nPriority: " + priority +
+                "\nStatus: " + status +
+                "\nCreated Time: " + createdTime +
+                "\n";
+    }
+}
