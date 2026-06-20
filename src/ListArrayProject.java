@@ -7,11 +7,11 @@ public class ListArrayProject {
         ArrayList<Task> tasks = new ArrayList<>();
         boolean isTrue = true;
         while (isTrue) {
-            System.out.println("---Menu---");
             System.out.println("1:---Add Task---");
             System.out.println("2:---View Task---");
             System.out.println("3:---Remove Task---");
-            System.out.println("4:---Exit---");
+            System.out.println("4:---Update Status---");
+            System.out.println("5:---Exit---");
             int choice = sc.nextInt();
 
             switch (choice) {
@@ -91,6 +91,48 @@ public class ListArrayProject {
 
                     break;
                 case 4:
+
+                    System.out.print("Enter Task ID: ");
+                    int updateId = sc.nextInt();
+
+                    boolean taskFound = false;
+
+                    for (Task t : tasks) {
+
+                        if (t.id == updateId) {
+
+                            taskFound = true;
+
+                            System.out.println("Current Status: " + t.status);
+
+                            sc.nextLine(); // consume newline
+
+                            System.out.print("Enter New Status (PENDING/COMPLETED): ");
+                            String statusInput = sc.nextLine().trim().toUpperCase();
+
+                            try {
+
+                                Status newStatus = Status.valueOf(statusInput);
+
+                                t.status = newStatus;
+
+                                System.out.println("Status Updated Successfully");
+
+                            } catch (IllegalArgumentException e) {
+
+                                System.out.println("Invalid Status");
+                            }
+
+                            break;
+                        }
+                    }
+
+                    if (!taskFound) {
+                        System.out.println("Task ID not found");
+                    }
+
+                    break;
+                case 5:
                     isTrue = false;
                     System.out.println("Thanks for using our app");
                     break;
